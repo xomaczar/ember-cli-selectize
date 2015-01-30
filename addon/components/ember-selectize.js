@@ -11,6 +11,12 @@ export default Ember.Component.extend({
   attributeBindings : ['multiple','autocomplete','required'],
   classNames : ['ember-selectize'],
 
+  //See docs https://github.com/brianreavis/selectize.js/blob/master/docs/usage.md#general
+  highlight: true,
+  openOnFocus: true,
+  maxOptions: 1000,
+  dropdownParent: null,
+  hideSelected: false,
   autocomplete:'off',
   multiple: false,
   maxItems: Ember.computed('multiple',function(){
@@ -119,7 +125,13 @@ export default Ember.Component.extend({
       onType : Ember.run.bind(this, '_onType'),
       render: get(this, 'renderOptions'),
       placeholder: get(this,'placeholder'),
-      maxItems: get(this, 'maxItems')
+      maxItems: get(this, 'maxItems'),
+      
+      highlight: get(this, 'highlight'),
+      openOnFocus: get(this, 'openOnFocus'),
+      maxOptions: get(this, 'maxOptions'),
+      dropdownParent: get(this, 'dropdownParent'),
+      hideSelected: get(this, 'hideSelected'), 
     };
   }),
 
